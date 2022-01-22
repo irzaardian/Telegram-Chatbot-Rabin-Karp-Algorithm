@@ -173,7 +173,7 @@ def ChatbotResponse(input_text):
     print("=============olahan pattern template=============")
     print(olahan_pattern_template)
 
-    if pattern_template[0][1] <= 50:   #index [0][1] karena sebelumnya sudah di sorting, index [0][1] merupakan hasil persentase
+    if pattern_template[0][1] <= 50:   #index [0][1] karena sebelumnya sudah di sorting, index [0][1] merupakan hasil persentase, 50 merupakan nilai penentu minimal similarity
         if pattern_template[0][1] > 30:
             balasan = "Apakah maksud anda "
             x = 0
@@ -181,13 +181,6 @@ def ChatbotResponse(input_text):
                 if str(pattern_template[0][0]) == str(olahan_pattern_template[x][0]):
                     hasil_jawaban = olahan_pattern_template[x][1]
                 x = x+1
-            # query = "select pertanyaan from pattern_template where id = '%s'" % (id)
-            # sql.execute(query)
-            # hasil_jawaban = sql.fetchone()
-
-            # string_hasil_jawaban = ''
-            # for i in hasil_jawaban:
-            #     string_hasil_jawaban = string_hasil_jawaban + i
             print(hasil_jawaban)
             pesan = balasan + hasil_jawaban + " ?"
             return pesan
