@@ -36,7 +36,7 @@ def penilaian (update, context) -> int:
     # user_data = context.user_data
     pertanyaan = context.user_data['pertanyaan']
     jawaban = context.user_data['jawaban']
-    simpan = R.simpan_penilaian(pertanyaan,jawaban,kesimpulan)
+    R.simpan_penilaian(pertanyaan,jawaban,kesimpulan)
     
     update.message.reply_text('Terima kasih atas penilaiannya :)')
     return ConversationHandler.END
