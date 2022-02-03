@@ -3,6 +3,7 @@ import PreProcessing as P
 from nltk import ngrams
 from copy import copy, deepcopy
 
+
 mydb = mysql.connector.connect(host='localhost',user='root',passwd='',database='chatbot')
 sql = mydb.cursor()
 
@@ -174,16 +175,16 @@ def ChatbotResponse(input_text):
     print(olahan_pattern_template)
 
     if pattern_template[0][1] <= 50:   #index [0][1] karena sebelumnya sudah di sorting, index [0][1] merupakan hasil persentase, 50 merupakan nilai penentu minimal similarity
-        if pattern_template[0][1] > 30:
-            balasan = "Apakah maksud anda "
-            x = 0
-            while x < len(pattern_template):
-                if str(pattern_template[0][0]) == str(olahan_pattern_template[x][0]):
-                    hasil_jawaban = olahan_pattern_template[x][1]
-                x = x+1
-            print(hasil_jawaban)
-            pesan = balasan + hasil_jawaban + " ?"
-            return pesan
+        # if pattern_template[0][1] > 30:
+        #     balasan = "Apakah maksud anda "
+        #     x = 0
+        #     while x < len(pattern_template):
+        #         if str(pattern_template[0][0]) == str(olahan_pattern_template[x][0]):
+        #             hasil_jawaban = olahan_pattern_template[x][1]
+        #         x = x+1
+        #     print(hasil_jawaban)
+        #     pesan = balasan + hasil_jawaban + " ?"
+        #     return pesan
         pesan = "Pertanyaan tidak dapat dimengerti"
         return pesan
     
@@ -199,3 +200,14 @@ def ChatbotResponse(input_text):
     print(string_hasil_jawaban)
 
     return string_hasil_jawaban
+
+def simpan_penilaian (pertanyaan, jawaban, kesimpulan):
+    # query = "select jawaban from pattern_template where id = '%s'" % (id)
+    # sql.execute(query)
+    query = "INSERT INTO penilaian (pertanyaan, jawaban, kesimpulan) VALUES (%s, %s,%s)"
+    val = (pertanyaan, jawaban, kesimpulan)
+    sql.execute(query, val)
+    mydb.commit()
+    # print(pertanyaan)
+    # print(jawaban)
+    # print(kesimpulan)
