@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 Token.py
+test_flash.py
+test.py
