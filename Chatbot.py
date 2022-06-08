@@ -8,7 +8,10 @@ R = Respons()
 
 class Chatbot():
     def start_command(update, context):
-        update.message.reply_text('Silahkan tanyakan sesuatu yang berkaitan dengan pertanyaan akademik jurusan teknik informatika fakultas ilmu komputer universitas sriwijaya!\n\nSeperti:\n"Apa syarat kerja praktik ?"\n"Bagaiamana cara daftar skripsi ?"\n"Cara mengurus KHS yang hilang"')
+        update.message.reply_text('Selamat datang di SIA Teknik Informatika UNSRI, pada kolom chat ini anda akan dilayani oleh sistem. Silahkan tanyakan sesuatu yang berkaitan dengan pertanyaan akademik jurusan teknik informatika fakultas ilmu komputer universitas sriwijaya.\n\nUntuk panduan lengkap penggunaan bot dapat menggunakan command /help.')
+
+    def help_command(update, context):
+        update.message.reply_text('SIA Teknik Informatika UNSRI merupakan aplikasi bot yang dapat menjawab pertanyaan seputar pertanyaan akademik jurusan teknik informatika fakultas ilmu komputer universitas sriwijaya. Anda dapat langsung menanyakan pertanyaan seputar akademik pada kolom chat yang tersedia.\n\nContoh Pertanyaan:\nApa syarat kerja praktik ?\nBagaiamana cara daftar skripsi ?\nCara mengurus KHS yang hilang')
 
     def handle_message(update, context):
         text = str(update.message.text)
@@ -64,6 +67,7 @@ class Chatbot():
             fallbacks=[CommandHandler('cancel', Chatbot.cancel)],
         )
         dp.add_handler(CommandHandler("start", Chatbot.start_command))
+        dp.add_handler(CommandHandler("help", Chatbot.help_command))
         dp.add_handler(conv_handler)
         # dp.add_error_handler(error)
         
