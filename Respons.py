@@ -9,7 +9,7 @@ sql = mydb.cursor()
 P = Processing()
 
 class Respons():
-    def chatbotResponse(self,input_text):
+    def chatSIAResponse(self,input_text):
         sql.execute("select id, pertanyaan from pattern_template")
         hasil_sql = sql.fetchall()
 
