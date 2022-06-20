@@ -4,7 +4,7 @@ from operator import itemgetter
 from datetime import datetime
 from Processing import *
 
-mydb = mysql.connector.connect(host='localhost',user='root',passwd='',database='chatbot')
+mydb = mysql.connector.connect(host='localhost',user='root',passwd='',database='chatsia')
 sql = mydb.cursor()
 P = Processing()
 
